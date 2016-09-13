@@ -10,6 +10,7 @@
         <thead>
           <tr>
               <th>Id</th>
+              <th>Photo</th>
               <th>Name</th>
               <th>Email</th>
               <th>Role</th>
@@ -22,8 +23,10 @@
         @if($users)
 
         @foreach($users as $user)
-          <tr>
+
+            <tr>
               <td>{{$user->id}}</td>
+              <td><img height="50" src="{{$user->photo ? $user->photo->file : 'No user photo'}}" alt=""></td>
               <td>{{$user->name}}</td>
               <td>{{$user->email}}</td>
               <td>{{$user->role->name}}</td>

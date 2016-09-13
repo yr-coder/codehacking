@@ -5,6 +5,7 @@
     <h1>Users</h1>
 
 
+
     <table class="table table-bordered">
         <thead>
           <tr>
@@ -38,6 +39,7 @@
 
         </tbody>
       </table>
+
 
 
     @stop

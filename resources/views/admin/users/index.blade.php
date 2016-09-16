@@ -2,9 +2,13 @@
 
 @section('content')
 
+    @if(Session::has('deleted_user'))
+
+        <p class="bg-success">{{session('deleted_user')}}</p>
+
+    @endif
+
     <h1>Users</h1>
-
-
 
     <table class="table table-bordered">
         <thead>
@@ -26,8 +30,8 @@
 
             <tr>
               <td>{{$user->id}}</td>
-              <td><img height="50" src="{{$user->photo ? $user->photo->file : 'No user photo'}}" alt=""></td>
-              <td>{{$user->name}}</td>
+              <td><img height="50" src="{{$user->photo ? $user->photo->file : 'http://placehold.it/500'}}" alt=""></td>
+              <td><a href="{{route('admin.users.edit', $user->id)}}">{{$user->name}}</a></td>
               <td>{{$user->email}}</td>
               <td>{{$user->role->name}}</td>
               <td>{{$user->is_active == 1 ? 'Active' : 'Inactive'}}</td>

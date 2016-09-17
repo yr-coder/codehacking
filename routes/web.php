@@ -19,16 +19,14 @@ Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/admin', function (){
+Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'admin'], function () {
 
-    return view('admin.index');
+    Route::resource('/users', 'AdminUsersController');
+
+    Route::get('/', function (){
+
+        return view('admin.index');
+
+    });
 
 });
-
-Route::resource('admin/users', 'AdminUsersController', ['names' => [
-
-    'index'=>'admin.users.index',
-    'create'=>'admin.users.create',
-    'edit'=>'admin.users.edit'
-
-]]);

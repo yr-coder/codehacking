@@ -50,7 +50,7 @@
 
         <ul class="nav navbar-top-links navbar-right">
 
-
+            <li><a href="{{ url('/home') }}">Home Page</a></li>
             <!-- /.dropdown -->
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -172,12 +172,6 @@
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
-
-
-
-
-
-
 
                     <li>
                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>

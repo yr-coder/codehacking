@@ -38,4 +38,22 @@ class User extends Authenticatable
 
     }
 
+    //This is Eloquent relationship
+
+    public function post()
+    {
+        return $this->hasMany('App\Post');
+    }
+
+    //This function checks whether user is Admin
+
+    public function isAdmin()
+    {
+        if ($this->role == 'administrator') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

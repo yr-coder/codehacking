@@ -21,12 +21,15 @@ Route::get('/home', 'HomeController@index');
 
 Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'admin'], function () {
 
-    Route::resource('/users', 'AdminUsersController');
-
     Route::get('/', function (){
 
         return view('admin.index');
 
     });
+
+    Route::resource('/users', 'AdminUsersController');
+
+    Route::resource('/posts', 'AdminPostsController');
+
 
 });

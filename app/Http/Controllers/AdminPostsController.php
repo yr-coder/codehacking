@@ -52,6 +52,8 @@ class AdminPostsController extends Controller
         //
         $input = $request->all();
 
+        $input['user_id'] = Auth::user()->id;
+
         if ($file = $request->file('photo_id')){
 
             $name = time().$file->getClientOriginalName();
@@ -63,8 +65,6 @@ class AdminPostsController extends Controller
             $input['photo_id'] = $photo->id;
 
         }
-
-        $input['user_id'] = Auth::user()->id;
 
         Post::create($input);
 
@@ -93,6 +93,11 @@ class AdminPostsController extends Controller
     public function edit($id)
     {
         //
+
+        $post = Post::findOrFail($id);
+        $categories = Category::all()->pluck('name', 'id')->toArray();
+
+        return view('admin.posts.edit', compact('post', 'categories'));
     }
 
     /**

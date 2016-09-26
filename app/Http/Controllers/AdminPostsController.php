@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Http\Requests\PostEditRequest;
 use App\Http\Requests\PostRequest;
 use App\Photo;
 use App\Post;
@@ -107,9 +108,27 @@ class AdminPostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostEditRequest $request, $id)
     {
         //
+        $post = Post::findOrFail($id);
+        $input = $request->all();
+
+        if ($file = $request->file('photo_id')){
+            $name = time().$file->getClientOriginalName();
+            $file->move('images', $name);
+            $photo = Photo::create(['file'=>$name]);
+            $input['photo_id'] = $photo->id;
+        }
+
+        $post->update($input);
+
+        return redirect('admin/posts');
+
+
+
+
+
     }
 
     /**

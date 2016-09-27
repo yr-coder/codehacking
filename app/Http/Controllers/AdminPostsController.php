@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class AdminPostsController extends Controller
 {
@@ -96,6 +97,7 @@ class AdminPostsController extends Controller
         //
 
         $post = Post::findOrFail($id);
+
         $categories = Category::all()->pluck('name', 'id')->toArray();
 
         return view('admin.posts.edit', compact('post', 'categories'));
@@ -140,5 +142,13 @@ class AdminPostsController extends Controller
     public function destroy($id)
     {
         //
+        $post = Post::findOrFail($id);
+
+        unlink(public_path(). $post->photo->file);
+        $post->delete();
+        Session::flash('deleted_post', 'The post number '.$post->id.' has been deleted');
+        return redirect('admin/posts');
+
+
     }
 }

@@ -4,6 +4,12 @@
 
     <h1>Posts</h1>
 
+    @if(Session::has('deleted_post'))
+
+        <p class="bg-success">{{session('deleted_post')}}</p>
+
+    @endif
+
     <table class="table table-bordered">
         <thead>
         <tr>

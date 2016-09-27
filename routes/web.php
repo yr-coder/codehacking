@@ -31,5 +31,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'admin'], f
 
     Route::resource('/posts', 'AdminPostsController');
 
+    Route::resource('/categories', 'AdminCategoriesController');
+
 
 });

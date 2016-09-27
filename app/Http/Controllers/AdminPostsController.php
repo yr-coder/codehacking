@@ -127,10 +127,6 @@ class AdminPostsController extends Controller
 
         return redirect('admin/posts');
 
-
-
-
-
     }
 
     /**

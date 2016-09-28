@@ -14,7 +14,6 @@
 
         {!! Form::open(['method' => 'POST', 'action' => 'AdminCategoriesController@store']) !!}
 
-
         <div class="form-group">
             {!! Form::label('name', 'Category Name:') !!}
             {!! Form::text('name', null, ['class'=>'form-control']) !!}
@@ -28,9 +27,7 @@
 
         @include('includes.form_error')
 
-
     </div>
-
 
     <div class="col-sm-6">
 
@@ -50,8 +47,8 @@
 
                 <tr>
                     <td>{{$category->id}}</td>
-                    <td>{{$category->name}}</td>
-                    <td>{{$category->created_at->diffForHumans()}}</td>
+                    <td><a href="{{route('admin.categories.edit', $category->id)}}">{{$category->name}}</a></td>
+                    <td>{{$category->created_at ? $category->created_at->diffForHumans() : 'unknown'}}</td>
 
                 </tr>
 

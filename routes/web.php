@@ -33,5 +33,6 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'admin'], f
 
     Route::resource('/categories', 'AdminCategoriesController');
 
+    Route::resource('/media', 'AdminMediaController');
 
 });

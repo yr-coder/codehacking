@@ -35,4 +35,8 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'admin'], f
 
     Route::resource('/media', 'AdminMediaController');
 
+    Route::resource('/comments', 'PostCommentsController');
+
+    Route::resource('/comment/replies', 'CommentRepliesController');
+
 });

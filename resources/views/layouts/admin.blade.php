@@ -71,9 +71,7 @@
             </li>
             <!-- /.dropdown -->
 
-
         </ul>
-
 
         {{--<ul class="nav navbar-nav navbar-right">--}}
         {{--@if(auth()->guest())--}}

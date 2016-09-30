@@ -43,7 +43,7 @@ class AdminMediaController extends Controller
     {
         //
 
-        if ($file = $request->file('photo_id')){
+        if ($file = $request->file('file')){
 
             $name = time().$file->getClientOriginalName();
 
@@ -99,5 +99,11 @@ class AdminMediaController extends Controller
     public function destroy($id)
     {
         //
+        $photo = Photo::findOrFail($id);
+
+        unlink(public_path().$photo->file);
+        $photo->delete();
+
+        return redirect('admin/media');
     }
 }

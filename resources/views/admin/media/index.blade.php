@@ -12,6 +12,7 @@
             <th>Original Filename</th>
             <th>Size</th>
             <th>Uploaded</th>
+            <th>Delete</th>
         </tr>
         </thead>
         <tbody>
@@ -25,6 +26,18 @@
                     <td>{{substr($photo->file, 18)}}</td>
                     <td>{{File::size(public_path().$photo->file)}}</td>
                     <td>{{$photo->created_at->diffForHumans()}}</td>
+                    <td>
+                        {!! Form::open(['method' => 'DELETE', 'action' => ['AdminMediaController@destroy', $photo->id], 'class' => '']) !!}
+
+                        <div class="form-group">
+                            {!! Form::submit('Delete',
+                              array('class'=>'btn btn-danger')) !!}
+                        </div>
+                        {!! Form::close() !!}
+
+
+
+                    </td>
 
                 </tr>
 

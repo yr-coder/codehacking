@@ -1,9 +1,6 @@
 @extends('layouts.blog-post')
 
-
 @section('content')
-
-
 
     <!-- Title -->
     <h1>{{$post->title}}</h1>

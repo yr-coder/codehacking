@@ -5769,4 +5769,8 @@ button.close {
 #admin-page {
   padding-top: 0; }
 
+.nested-comment {
+  padding-top: 5px;
+  padding-bottom: 10px; }
+
 /*# sourceMappingURL=app.css.map */

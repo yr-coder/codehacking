@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\CommentReply;
+use App\Comment;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 
 class CommentRepliesController extends Controller
 {
@@ -38,6 +42,29 @@ class CommentRepliesController extends Controller
     {
         //
     }
+
+    public function createReply(Request $request)
+    {
+
+        $user = Auth::user();
+
+        $data = [
+
+            'comment_id'=>$request->comment_id,
+            'author'=>$user->name,
+            'email'=>$user->email,
+            'is_active'=>1,
+            'photo'=>$user->photo->file,
+            'body'=>$request->body
+
+        ];
+
+        CommentReply::create($data);
+
+        return redirect()->back();
+
+    }
+
 
     /**
      * Display the specified resource.

@@ -25,7 +25,7 @@ class PostRequest extends FormRequest
     {
         return [
             //
-            'title'=>'required|unique:posts',
+            'title'=>'required',
             'body'=>'required',
             'photo_id' => 'required',
             'category_id' => 'required'

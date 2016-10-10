@@ -10,10 +10,10 @@
     <tr>
         <th>Id</th>
         <th>Post</th>
-
         <th>Author</th>
         <th>Email</th>
         <th>Body</th>
+        <th>Replies</th>
         <th>Created</th>
         <th>Status</th>
         <th>Delete</th>
@@ -31,6 +31,13 @@
                 <td>{{$comment->author}}</td>
                 <td>{{$comment->email}}</td>
                 <td>{{str_limit($comment->body, 25)}}</td>
+                <td>
+
+                    @if(count($comment->replies)>0)
+                    <a href="{{route('admin.replies.show', $comment->id)}}">Show replies</a>
+
+                    @endif
+                </td>
                 <td>{{$comment->created_at->diffForHumans()}}</td>
                 <td>
                     @if($comment->is_active == 0)

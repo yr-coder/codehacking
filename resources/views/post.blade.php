@@ -78,23 +78,31 @@
 
                             @if($reply->is_active)
 
-                        <div class="nested-comment media">
-                        <a class="pull-left" href="#">
-                            <img class="media-object" height="50" src="{{$reply->photo}}" alt="">
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading">{{$reply->author}}
-                                <small>{{$reply->created_at->diffForHumans()}}</small>
-                            </h4>
-                            {{$reply->body}}
-                        </div>
+                                {{--Nested Comment--}}
 
-                            </div>
+                                <div class="nested-comment media">
+                                <a class="pull-left" href="#">
+                                    <img class="media-object" height="50" src="{{$reply->photo}}" alt="">
+                                </a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">{{$reply->author}}
+                                        <small>{{$reply->created_at->diffForHumans()}}</small>
+                                    </h4>
+                                    {{$reply->body}}
+                                </div>
+
+                                    </div>
                             @endif
 
                         @endforeach
 
                     @endif
+
+                    <div class="comment-reply-container">
+
+                        <div class="toggle-reply btn btn-primary pull-right">Reply</div>
+
+                        <div class="comment-reply col-sm-8">
 
                     {!! Form::open(['method'=>'POST', 'action'=>'CommentRepliesController@createReply']) !!}
 
@@ -105,12 +113,16 @@
                             </div>
 
                             <div class="form-group">
-                                {!! Form::submit('Reply', ['class'=>'btn btn-primary']) !!}
+                                {!! Form::submit('Submit', ['class'=>'btn btn-primary']) !!}
                             </div>
                     {!! Form::close() !!}
 
+                        </div>
+
+                    </div>
 
                 </div>
+
             </div>
 
 
@@ -120,8 +132,20 @@
 
     @endif
 
+    @stop
+
+@section('scripts')
+
+    <script>
+
+        $(".comment-reply-container .toggle-reply").click(function () {
+
+            $(this).next().slideToggle("slow");
+
+        });
 
 
+    </script>
 
 
     @stop

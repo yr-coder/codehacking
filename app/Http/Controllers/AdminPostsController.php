@@ -10,6 +10,9 @@ use App\Post;
 use App\User;
 use Illuminate\Http\Request;
 
+
+
+
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -25,7 +28,7 @@ class AdminPostsController extends Controller
     {
         //
 
-        $posts = Post::all();
+        $posts = Post::paginate(10);
 
         return view('admin.posts.index', compact('posts'));
     }
@@ -148,9 +151,9 @@ class AdminPostsController extends Controller
 
     }
 
-    public function post($id)
+    public function post($slug)
     {
-        $post = Post::findOrFail($id);
+        $post = Post::findBySlugOrFail($slug);
 
         return view('post', compact('post'));
     }
